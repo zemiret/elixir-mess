@@ -13,3 +13,18 @@ mix deps.get
 ```
 
 4. Check if it's compiling: `mix test`
+
+## Where can we use flow?
+
+* Extracting data from each file.
+    * For each message filepath extract its statistics into some internal representation
+
+* Extracting statistics. What should we extract?
+    * Total number of exchanged messages
+    * Messages exchanged per day
+    * Bags of words. Which words do we use most frequently
+    * With who did we exchange the most messages
+
+* Search for specific word usage.
+    * How many times have we used it
+    * In messages with who have we used it and how many times
