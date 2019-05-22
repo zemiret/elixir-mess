@@ -4,13 +4,18 @@ defmodule JSONParserEnum do
   @respath "res"
 
   def testprint do
-    conversations = extract_filepaths()
-    |> Enum.map(fn filepath -> 
-      File.read!(filepath) |> Poison.decode!
-    end)
-    |> Enum.map(&(parse_conversation/1))
+    parse() |> IO.inspect
+  end
 
-    IO.inspect(conversations)
+  def parse do
+    extract_filepaths()
+    |> Enum.map(fn filepath -> 
+      File.read!(filepath) |> Poison.decode! |> parse_conversation
+    end)
+  end
+
+  def benchmark do
+    fn -> parse() end |> :timer.tc |> elem(0)
   end
 
   defp extract_filepaths do

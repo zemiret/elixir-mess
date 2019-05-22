@@ -4,13 +4,20 @@ defmodule JSONParserFlow do
   @respath "res"
 
   def testprint do
-    conversations = extract_filepaths()
-    |> Enum.map(fn filepath -> 
-      File.read!(filepath) |> Poison.decode!
-    end)
-    |> Enum.map(&(parse_conversation/1))
+    parse() |> IO.inspect
+  end
 
-    IO.inspect(conversations)
+  def parse do
+    extract_filepaths()
+    |> Flow.from_enumerable
+    |> Flow.map(fn filepath ->
+      File.read!(filepath) |> Poison.decode! |> parse_conversation 
+    end)
+    |> Enum.to_list
+  end
+
+  def benchmark do
+    fn -> parse() end |> :timer.tc |> elem(0)
   end
 
   defp extract_filepaths do
@@ -19,8 +26,10 @@ defmodule JSONParserFlow do
 
   defp parse_conversation(contentMap) do
     messages = Map.get(contentMap, "messages")
-    |> Enum.filter(&(String.downcase(Map.get(&1, "type")) == "generic"))
-    |> Enum.map(&(parse_message/1))
+    |> Flow.from_enumerable
+    |> Flow.filter(&(String.downcase(Map.get(&1, "type")) == "generic"))
+    |> Flow.map(&(parse_message/1))
+    |> Enum.to_list
 
     %Conversation{
       participants: Map.get(contentMap, "participants"),
