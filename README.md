@@ -14,6 +14,14 @@ mix deps.get
 
 4. Check if it's compiling: `mix test`
 
+## Running
+```
+iex -S mix
+```
+
+This command starts an interactive session with your files compiled
+so you can acces them in REPL.
+
 ## Where can we use flow?
 
 * Extracting data from each file.

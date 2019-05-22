@@ -1,3 +1,3 @@
 defmodule Conversation do
-    defstruct participatnts: [], messages: [], title: ""
+    defstruct participants: [], messages: [], title: ""
 end
