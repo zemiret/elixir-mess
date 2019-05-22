@@ -5,6 +5,8 @@ defmodule MessFlow do
   The total count of messages you've exchanged
   """
   def messages_total(conversations) do
+    # TODO: This ain't working yet!
+
     conversations
     |> Flow.from_enumerable
     |> Flow.map(fn c -> length(c.messages) end)
@@ -30,6 +32,8 @@ defmodule MessFlow do
   Takes n people with whom you have exchanged the most messages 
   """
   def most_liked(conversations, n \\ 5) do
+    # TODO: Hmm. This is much slower than the enum version
+
     [topn] = conversations
     |> Flow.from_enumerable
     |> Flow.map(fn conversation -> 
