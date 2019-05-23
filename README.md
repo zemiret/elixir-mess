@@ -34,4 +34,4 @@ so you can acces them in REPL.
     - [x] With who did we exchange the most messages
 
 * Search for specific word usage.
-    - [ ] How many times have someone (especially we) used it (show windowing here)
+    - [x] How many times have someone (especially we) used it (show windowing here)
