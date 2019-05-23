@@ -25,14 +25,13 @@ so you can acces them in REPL.
 ## Where can we use flow?
 
 * Extracting data from each file.
-    * For each message filepath extract its statistics into some internal representation
+    - [x] For each message filepath extract its statistics into some internal representation
 
 * Extracting statistics. What should we extract?
-    * Total number of exchanged messages
-    * Messages exchanged per day
-    * Bags of words. Which words do we use most frequently
-    * With who did we exchange the most messages
+    - [x] Total number of exchanged messages
+    - [x] Messages exchanged per day
+    - [x] Bags of words. Which words do we use most frequently
+    - [x] With who did we exchange the most messages
 
 * Search for specific word usage.
-    * How many times have we used it
-    * In messages with who have we used it and how many times
+    - [ ] How many times have someone (especially we) used it (show windowing here)
