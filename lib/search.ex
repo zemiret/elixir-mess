@@ -1,11 +1,14 @@
 defmodule Search do
   @moduledoc false
 
-  def search(conversations, word, by \\ nil, window_size \\ 1000) do
+  def search(conversations, word, by \\ nil, in_conversation \\ nil, window_size \\ 1000) do
     word = String.downcase(word)
 
     freq_windows = conversations
     |> Flow.from_enumerable
+    |> Flow.filter(fn c ->
+      (in_conversation == nil or c.title == in_conversation)
+    end)
     |> Flow.flat_map(fn c -> c.messages end)
     |> Flow.filter(fn m ->
       m.content != nil and
