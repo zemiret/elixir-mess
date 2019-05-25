@@ -22,16 +22,16 @@ iex -S mix
 This command starts an interactive session with your files compiled
 so you can acces them in REPL.
 
-## Where can we use flow?
+## Where are we using flow?
 
 * Extracting data from each file.
-    - [x] For each message filepath extract its statistics into some internal representation
+    - [x] For each message filepath extract it into some internal representation
 
-* Extracting statistics. What should we extract?
+* Extracting statistics.
     - [x] Total number of exchanged messages
     - [x] Messages exchanged per day
     - [x] Bags of words. Which words do we use most frequently
     - [x] With who did we exchange the most messages
 
 * Search for specific word usage.
-    - [x] How many times have someone (especially we) used it (show windowing here)
+    - [x] How many times have someone (especially we) used it together with windowing in 1000 counter window
